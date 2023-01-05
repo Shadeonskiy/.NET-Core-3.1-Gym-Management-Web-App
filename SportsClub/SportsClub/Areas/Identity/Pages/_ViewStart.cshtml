@@ -1,0 +1,12 @@
+﻿
+@{
+    if (User.IsInRole("Адміністратор"))
+    {
+        Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+
+}

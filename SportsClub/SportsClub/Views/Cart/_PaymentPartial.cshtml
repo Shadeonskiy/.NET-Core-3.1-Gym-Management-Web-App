@@ -1,0 +1,70 @@
+﻿@model CartViewModel
+
+
+<div class="modal fade" id="payment" aria-labelledby="paymentLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form asp-action="SaveOrder" enctype="multipart/form-data">
+				<div class="modal-header">
+					<h5 class="modal-title" id="paymentLabel">Підтвердження замовлення</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+					<div class="form-group">
+						<label asp-for="OrderHeader.User" class="control-label"></label>
+						<input class="form-control" value="@User.Identity.Name" disabled />
+					</div>
+
+					<div class="form-group">
+						<label asp-for="OrderHeader.Name" class="control-label"></label>
+						<input placeholder="Your name" asp-for="OrderHeader.Name" class="form-control" />
+						<span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+					</div>
+
+
+					<div class="form-group">
+						<label asp-for="OrderHeader.PhoneNumber" class="control-label"></label>
+						<input placeholder="Format: 097-742-5119" asp-for="OrderHeader.PhoneNumber" class="form-control" />
+						<span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="OrderHeader.ExecutionDate" class="control-label"></label>
+						<input type="datetime-local" asp-for="OrderHeader.ExecutionDate" class="form-control" />
+						<span asp-validation-for="OrderHeader.ExecutionDate" class="text-danger"></span>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="OrderHeader.Performer" class="control-label"></label>
+						<select asp-for="OrderHeader.Performer" class="form-control">
+							<option value="0">Оберіть тренера</option>
+							<option>Тренер №1</option>
+							<option>Тренер №2</option>
+							<option>Тренер №3</option>
+						</select>
+						<span asp-validation-for="OrderHeader.Performer" class="text-danger"></span>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="OrderHeader.PaymentType" class="control-label"></label>
+						<select asp-for="OrderHeader.PaymentType" class="form-control">
+							<option value="0">Choose a payment type</option>
+							<option>Картка</option>
+							<option>Готівка</option>
+						</select>
+						<span asp-validation-for="OrderHeader.PaymentType" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Припинити запис</button>
+					<button type="submit" class="btn btn-primary" data-save="modal">Зберегти</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Графік роботи";
+}
+
+<div class="banner">
+    <div class="banner-title">
+        <h2>Графік роботи <span>клубу</span></h2>
+    </div>
+    <img src="~/media/photo1.jpg" alt="" />
+</div>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Головна</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Графік роботи
+        <li>
+    </ol>
+</nav>
+
+<h2 class="text-danger">Оберіть клуб</h2>
+<div class="row justify-content-around align-items-center">
+    <div class="col-6 col-md-4 col-lg-2">
+        <a href="#" class="btn btn-dark bg-danger btn-lg form-control text-uppercase active">Lux</a>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2">
+        <a href="#" class="btn btn-dark btn-lg form-control text-uppercase">Gold</a>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2">
+        <a href="#" class="btn btn-dark btn-lg form-control text-uppercase">Business</a>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2">
+        <a href="#" class="btn btn-dark btn-lg form-control text-uppercase">Amigo</a>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2">
+        <a href="#" class="btn btn-dark btn-lg form-control text-uppercase">Gym</a>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2">
+        <a href="#" class="btn btn-dark btn-lg form-control text-uppercase">Grand</a>
+    </div>
+</div>
+
+<div class="row mt-lg-5">
+    <div class="table-responsive">
+        <table class="table table-bordered text-center table-dark">
+            <thead>
+                <tr class="bg-danger text-white">
+                    <th class="text-uppercase">Час</th>
+                    <th class="text-uppercase">Понеділок</th>
+                    <th class="text-uppercase">Вівторок</th>
+                    <th class="text-uppercase">Середа</th>
+                    <th class="text-uppercase">Четвер</th>
+                    <th class="text-uppercase">П'ятниця</th>
+                    <th class="text-uppercase">Субота</th>
+                    <th class="text-uppercase">Неділя</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="align-middle font-weight-bold">09:00am</td>
+                    <td>
+                        <span class="bg-danger padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Кардіо</span>
+                        <div class="margin-10px-top font-size14">9:00-12:00</div>
+                        <div class="font-size13 text-light-gray">Сахно Наталя</div>
+                    </td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                </tr>
+                <tr>
+                    <td class="align-middle font-weight-bold">12:00am</td>
+                    <td>
+                        <span class="bg-danger padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Кардіо</span>
+                        <div class="margin-10px-top font-size14">12:00-15:00</div>
+                        <div class="font-size13 text-light-gray">Сахно Наталя</div>
+                    </td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                </tr>
+                <tr>
+                    <td class="align-middle font-weight-bold">15:00am</td>
+                    <td>
+                        <span class="bg-danger padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Кардіо</span>
+                        <div class="margin-10px-top font-size14">15:00-18:00</div>
+                        <div class="font-size13 text-light-gray">Сахно Наталя</div>
+                    </td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                </tr>
+                 <tr>
+                    <td class="align-middle font-weight-bold">18:00am</td>
+                    <td>
+                        <span class="bg-danger padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Кардіо</span>
+                        <div class="margin-10px-top font-size14">18:00-21:00</div>
+                        <div class="font-size13 text-light-gray">Сахно Наталя</div>
+                    </td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                </tr>
+                <tr>
+                    <td class="align-middle font-weight-bold fs-3">21:00am</td>
+                    <td>
+                        <span class="bg-danger padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Кардіо</span>
+                        <div class="margin-10px-top font-size14">21:00-23:00</div>
+                        <div class="font-size13 text-light-gray">Сахно Наталя</div>
+                    </td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                    <td class="bg-light-gray"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

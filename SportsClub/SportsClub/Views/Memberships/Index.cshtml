@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MembershipPlan>
+
+@{
+	ViewData["Title"] = "Абонементи";
+
+	var filter = Context.Request.Query["filter"];
+
+	var month = "text";
+	var quater = "text";
+	var halfYear = "text";
+	var year = "text";
+
+	switch (filter)
+	{
+		case "Місяць":
+			month = "active text-white";
+			break;
+		case "Квартал":
+			quater = "active text-white";
+			break;
+		case "Пів року":
+			halfYear = "active text-white";
+			break;
+		case "Рік":
+			year = "active text-white";
+			break;
+	}
+}
+<div class="banner">
+	<div class="banner-title">
+		<h2>Наші <span>ціни</span></h2>
+	</div>
+	<img src="~/media/photo1.jpg" alt=""/>
+</div>
+
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-white">
+		<li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Головна</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Абонементи<li>
+	</ol>
+</nav>
+
+<div class="row justify-content-around align-items-center">
+	<div class="col-6 col-md-4 col-lg-2">
+		<a asp-action="Index" asp-route-filter="Місяць" class="btn btn-outline-dark rounded-pill form-control @month">Місячний</a>
+	</div>
+	<div class="col-6 col-md-4 col-lg-2">
+		<a asp-action="Index" asp-route-filter="Квартал" class="btn btn-outline-dark rounded-pill form-control @quater">Квартальний</a>
+	</div>
+	<div class="col-6 col-md-4 col-lg-2">
+		<a asp-action="Index" asp-route-filter="Пів року" class="btn btn-outline-dark rounded-pill form-control @halfYear">Піврічний</a>
+	</div>
+	<div class="col-6 col-md-4 col-lg-2">
+		<a asp-action="Index" asp-route-filter="Рік" class="btn btn-outline-dark rounded-pill form-control @year">Річний</a>
+	</div>
+</div>
+<br /><br/>
+<div class="row d-flex justify-content-around align-items-center">
+	@foreach (var item in Model)
+	{
+		if (item.Status != "Deactivated")
+		{
+			<div class="border rounded-lg col-4">
+				<br/>
+				<h3 class="justify-content-center align-items-center text-center">@item.AmountOfWorkouts</h3>
+				<h5 class="justify-content-center align-items-center text-center">тренувань</h5>
+				<br/><br />
+				<div class="row justify-content-between">
+					<div class="col-6">
+						<h6 class="text-muted">@item.Name</h6>
+						<h6 class="text-muted">@item.Price.ToString("C2")</h6>
+					</div>
+					<div class="col-6 text-right">
+						<h6>
+							<a class="btn rounded-circle" asp-action="Subscribe" asp-route-id="@item.Id">Sub</a>
+						</h6>
+					</div>
+				</div>
+			</div>
+		}
+	}
+</div>

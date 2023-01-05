@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SportsClub.Areas.Identity.Data.AppUser>
+
+@{
+    ViewData["Title"] = "Перелік користувачів";
+}
+
+
+<h2>@ViewData["Title"]</h2>
+<table class="table">
+	@foreach (var user in Model)
+	{
+		<tr>
+			<td>@user.FirstName @user.LastName</td>
+			<td>@user.Email</td>
+			<td>
+				<a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Права доступу</a>
+			</td>
+		</tr>
+	}
+</table>
+<div class="form-group">
+	<p>
+		<b>
+			Total Users till @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)
+			:
+		</b><span class="label label-primary">@Model.Count()</span>
+	</p>
+</div>

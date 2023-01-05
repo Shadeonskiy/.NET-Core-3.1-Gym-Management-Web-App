@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Service>
+
+@{
+	ViewData["Title"] = "Наші послуги";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>Категорія : @ViewBag.CategoryName</h4>
+
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-white">
+		<li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Головна</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Послуги : @ViewBag.CategoryName</li>
+	</ol>
+</nav>
+
+<div class="col">
+	<form asp-action="Service" method="get">
+		<p>
+			<input type="search" placeholder="Enter Service Name ...." value="@ViewData["Search"]" name="serviceSearch" style="width:500px;"/>
+			<input type="submit" value="Search" class="btn btn-primary" /> |
+			<a asp-action="Services">Get All Services</a>
+		</p>
+	</form>
+	<div class="row py-5 justify-content-between">
+		@foreach (var item in Model)
+		{
+			<div style="width: 550px;" class="mb-3 mb-lg-5">
+				<div class="hover hover-3 text-white rounded">
+					<img src="~/media/services/@item.Image" class="img-fluid" alt="" />
+					<div class="hover-overlay"></div>
+					<div style="font-size: 32px; z-index: 99;" class="banner-title">@item.Name</div>
+					<div class="hover-3-content px-5 py-4">
+						<p class="hover-3-description small text-uppercase mb-0">
+							<a class="btn btn-danger" asp-area="" asp-controller="Services" asp-action="Details" asp-route-serviceId="@item.Id">Детальніше</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	@if (ViewBag.TotalPages > 1)
+	{
+		<div class="d-flex w-100 justify-content-center">
+			<pagination page-count="@ViewBag.TotalPages"
+				page-target="/services/@ViewBag.CategorySlug"
+				page-number="@ViewBag.PageNumber"
+				page-range="@ViewBag.PageRange">
+			</pagination>
+		</div>
+	}
+	@*<div class="bg-success mt-3 p-3 text-white">
+		<vc:small-cart />
+	</div>*@
+</div>

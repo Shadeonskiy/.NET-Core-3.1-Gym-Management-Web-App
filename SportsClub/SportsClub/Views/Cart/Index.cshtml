@@ -1,0 +1,50 @@
+﻿@model CartViewModel
+
+@{
+	ViewData["Title"] = "Перегляд замовлень";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@Html.AntiForgeryToken()
+@if(Model.CartItems.Count > 0)
+{
+	<table class="table">
+		<thead>
+			<th>Послуга</th>
+			<th>Кількість</th>
+			<th></th>
+			<th>Ціна</th>
+			<th>Загалом</th>
+		</thead>
+		@foreach (var item in Model.CartItems)
+		{
+			<tr>
+				<td>@item.ProductName</td>
+				<td>@item.Quantity</td>
+				<td>
+					<a class="btn btn-primary btn-smm" asp-action="Add" asp-route-id="@item.ProductId">+</a>
+					<a class="btn btn-info btn-smm" asp-action="Decrease" asp-route-id="@item.ProductId">-</a>
+					<a class="btn btn-danger btn-smm" asp-action="Remove" asp-route-id="@item.ProductId">Прибрати</a>
+				</td>
+				<td>@item.Price.ToString("C2")</td>
+				<td>@Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Total).ToString("C2")</td>
+			</tr>
+		}
+		<tr>
+			<td class="text-right" colspan="4">Загальна вартість: @Model.GrandTotal.ToString("C2")</td>
+		</tr>
+		<tr>
+			<td class="text-right" colspan="4">
+				<a class="btn btn-danger" asp-action="Clear">Прибрати усі замовлення</a>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#payment">Підтвердити замовлення</button>
+			</td>
+		</tr>
+	</table>
+}
+else
+{
+	<h3 class="display-4 text-center">Ви нічого не замовляли</h3>
+}
+
+@await Html.PartialAsync("_PaymentPartial")

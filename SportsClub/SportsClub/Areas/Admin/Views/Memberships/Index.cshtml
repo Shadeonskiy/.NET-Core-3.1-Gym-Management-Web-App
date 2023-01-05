@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MembershipPlan>
+
+@{
+    ViewData["Title"] = "Абонементи спортивного клубу";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create">Створити новий абонемент</a>
+</p>
+<table id="myTable" class="table table-bordered table-hover table-sm">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Короткий опис</th>
+            <th>Період</th>
+            <th>Кількість тренувань</th>
+            <th>Кількість клієнтів</th>
+            <th>Ціна</th>
+            <th>Статус</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) 
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td class="text-truncate text-nowrap">@item.Description</td>
+            <td>@item.Period</td>
+            <td>@item.AmountOfWorkouts</td>
+            <td>@item.TotalAmount</td>
+            <td>@item.Price.ToString("C2")</td>
+            <td>@item.Status</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редагувати</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="confirmDeletion">Видалити</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
