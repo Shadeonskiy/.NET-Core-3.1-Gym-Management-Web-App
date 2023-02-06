@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using SportsClub.Areas.Identity.Data;
 using SportsClub.Data;
 using SportsClub.Models;
+using SportsClub.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +50,10 @@ namespace SportsClub
                                  .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
+
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.AddTransient<IEmailSender, EmailSender>();
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
